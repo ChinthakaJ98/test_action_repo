@@ -20,7 +20,7 @@ jobs:
           exit 1
   fail-for-draft2:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'bug'
+    if: contains(github.event.pull_request.labels.*.name, 'bug')
     steps:
       - name: Pass if PR is a bug
         run: |

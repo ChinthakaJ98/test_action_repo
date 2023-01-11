@@ -12,16 +12,9 @@ on:
 jobs:
   fail-for-draft:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'draft')
+    if: ${{!contains(github.event.pull_request.labels.*.name, 'draft') || join(github.event.pull_request.labels) == ''}}
     steps:
       - name: Fail if PR is a draft
         run: |
-          echo "This PR is currently a draft."
+          echo "This PR is currently a not ready to be merged."
           exit 1
-  fail-for-draft2:
-    runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'bug')
-    steps:
-      - name: Pass if PR is a bug
-        run: |
-          echo "This PR is currently ready to merge."

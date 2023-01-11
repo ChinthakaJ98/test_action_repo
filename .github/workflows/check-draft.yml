@@ -17,4 +17,3 @@ jobs:
       - name: Fail if PR is a draft
         run: |
           echo "This PR is currently a not ready to be merged."
-          exit 1

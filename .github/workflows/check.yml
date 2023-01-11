@@ -10,10 +10,11 @@ on:
       - unlabeled
 
 jobs:
-  fail-for-draft:
+  fail-for-draft-new:
     runs-on: ubuntu-latest
     if: ${{!contains(github.event.pull_request.labels.*.name, 'draft') || join(github.event.pull_request.labels) == ''}}
     steps:
       - name: Fail if PR is a draft
         run: |
           echo "This PR is currently a not ready to be merged."
+          exit 1
